@@ -53,6 +53,8 @@ input:focus{border-color:var(--giallo);background:#fff}
 .btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:14px;padding:15px;font:800 16px Archivo,sans-serif;cursor:pointer}
 .btn.scuro{background:var(--blu);color:#fff}
 .btn.chiaro{background:transparent;color:var(--blu);border:2px solid var(--blu);margin-top:10px}
+[hidden]{display:none!important}
+.torna{background:#fff;border-radius:14px;padding:14px;margin:10px 0 0;font-weight:600;text-align:center;line-height:1.4}
 .privacy{text-align:center;color:var(--grigio);font-size:13px;margin-top:18px}
 .firma{text-align:center;font:700 13px Archivo,sans-serif;color:var(--blu);margin-top:6px;letter-spacing:.04em}
 </style>
@@ -115,7 +117,8 @@ input:focus{border-color:var(--giallo);background:#fff}
   <p>Scrivimi in privato su Instagram quanto ti lascia il mezzo che va peggio. Ti rispondo io.</p>
   <div class="msg" id="messaggio">Ciao Mirco, ho fatto il conto per mezzo: …</div>
   <button class="btn scuro" type="button" onclick="copia()" id="btnCopia">Copia il messaggio</button>
-  <a class="btn chiaro" href="https://ig.me/m/gasparottomirco" target="_blank" rel="noopener">Apri la chat con Mirco su Instagram</a>
+  <a class="btn chiaro" id="apriChat" href="https://ig.me/m/gasparottomirco" target="_blank" rel="noopener">Apri la chat con Mirco su Instagram</a>
+  <p class="torna" id="tornaChat" hidden>Ora chiudi questa pagina con la <b>✕</b> in alto: torni nella chat con Mirco. Incolla lì il messaggio.</p>
 </div>
 
 <div class="privacy">I numeri restano sul tuo telefono: non salviamo niente.</div>
@@ -123,6 +126,7 @@ input:focus{border-color:var(--giallo);background:#fff}
 </div>
 
 <script>
+var DENTRO_APP = /Instagram|FBAN|FBAV|FB_IAB|FBIOS/i.test(navigator.userAgent || '');
 var VOCI = [
   ['inc', 'Incasso in un mese', 'Quello che hai fatturato con questo mezzo.', '€'],
   ['gas', 'Gasolio', '', '€'],
@@ -196,13 +200,14 @@ function calcola(){
 }
 function copia(){
   var t = document.getElementById('messaggio').textContent, b = document.getElementById('btnCopia');
-  function fatto(){ b.textContent = 'Copiato ✓ Ora incollalo nella chat'; setTimeout(function(){ b.textContent = 'Copia il messaggio'; }, 3000); }
+  function fatto(){ b.textContent = DENTRO_APP ? 'Copiato ✓ Chiudi la pagina e incollalo in chat' : 'Copiato ✓ Ora incollalo nella chat'; setTimeout(function(){ b.textContent = 'Copia il messaggio'; }, 3000); }
   if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(fatto, function(){ vecchio(t); fatto(); }); }
   else { vecchio(t); fatto(); }
 }
 function vecchio(t){ var a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch(e){} a.remove(); }
 aggiungi(); aggiungi();
 document.getElementById('fissi').oninput = calcola;
+if (DENTRO_APP){ document.getElementById('apriChat').hidden = true; document.getElementById('tornaChat').hidden = false; }
 </script>
 </body>
 </html>
