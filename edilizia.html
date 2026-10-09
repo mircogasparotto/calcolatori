@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Il costo vero di un'ora della tua squadra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--blu:#0E1B2E;--blu2:#16263F;--giallo:#FFD43B;--testo:#0E1B2E;--grigio:#5B6575;--linea:#E3E7EE;--fondo:#F4F6FA;--rosso:#D92D20;--verde:#12805C}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--fondo);color:var(--testo);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.45}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 40px}
+header{background:var(--blu);color:#fff;padding:28px 20px 30px;border-radius:0 0 22px 22px;margin:0 -16px 20px}
+.tag{display:inline-block;background:var(--giallo);color:var(--blu);font:700 12px Archivo,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:99px}
+h1{font:900 30px/1.08 Archivo,sans-serif;margin:14px 0 10px;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--giallo)}
+header p{margin:0;color:#C9D2E0;font-size:15.5px}
+.card{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:20px 18px;margin-bottom:14px}
+.step{font:700 12px Archivo,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--grigio);margin-bottom:4px}
+h2{font:800 20px/1.2 Archivo,sans-serif;margin:0 0 14px}
+label{display:block;font-weight:600;font-size:15px;margin:14px 0 6px}
+label:first-of-type{margin-top:0}
+.hint{display:block;font-weight:400;color:var(--grigio);font-size:13.5px;margin-top:2px}
+.campo{position:relative}
+input{width:100%;font:600 18px Inter,sans-serif;color:var(--testo);background:#FFFBEA;border:2px solid #F3E3A0;border-radius:12px;padding:12px 44px 12px 14px;outline:none;-moz-appearance:textfield}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input:focus{border-color:var(--giallo);background:#fff}
+.u{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--grigio);font-weight:600;font-size:14px;pointer-events:none}
+.riga{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.riga .n{flex:0 0 74px;font-weight:600;font-size:14px;color:var(--grigio)}
+.riga .campo{flex:1}
+.riga button{flex:0 0 36px;height:36px;border:0;border-radius:10px;background:var(--fondo);color:var(--grigio);font-size:18px;cursor:pointer}
+.agg{border:2px dashed var(--linea);background:none;border-radius:12px;width:100%;padding:11px;font:600 15px Inter,sans-serif;color:var(--blu);cursor:pointer;margin-top:4px}
+.ris{background:var(--blu);color:#fff;border:0}
+.ris h2{color:#fff}
+.big{font:900 46px/1 Archivo,sans-serif;color:var(--giallo);margin:6px 0 4px}
+.sub{color:#C9D2E0;font-size:14.5px}
+.confronto{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 6px}
+.box{background:var(--blu2);border-radius:14px;padding:12px}
+.box b{display:block;font:800 22px Archivo,sans-serif;margin-top:4px}
+.box span{font-size:13px;color:#C9D2E0}
+.verdetto{border-radius:14px;padding:14px;margin-top:12px;font-weight:600;font-size:15.5px}
+.verdetto.male{background:#3A1717;color:#FFD9D6}
+.verdetto.bene{background:#0F2E25;color:#CDF3E3}
+.verdetto b{font-family:Archivo,sans-serif;font-size:19px}
+.vuoto{color:#C9D2E0;font-size:15px;margin:6px 0 0}
+.cta{background:var(--giallo);border:0}
+.cta h2{margin-bottom:8px}
+.cta p{margin:0 0 14px}
+.msg{background:#fff;border-radius:12px;padding:12px 14px;font-weight:600;margin-bottom:12px}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:14px;padding:15px;font:800 16px Archivo,sans-serif;cursor:pointer}
+.btn.scuro{background:var(--blu);color:#fff}
+.btn.chiaro{background:transparent;color:var(--blu);border:2px solid var(--blu);margin-top:10px}
+.privacy{text-align:center;color:var(--grigio);font-size:13px;margin-top:18px}
+.firma{text-align:center;font:700 13px Archivo,sans-serif;color:var(--blu);margin-top:6px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <span class="tag">Regalo di Mirco · Edilizia</span>
+  <h1>Il costo <em>vero</em> di un'ora della tua squadra</h1>
+  <p>Nel preventivo metti un prezzo all'ora. Qui scopri quanto ti costa davvero quell'ora, contando anche le ore che paghi e non fatturi. 3 minuti, con i tuoi numeri.</p>
+</header>
+
+<div class="card">
+  <div class="step">Passo 1 di 3</div>
+  <h2>Quanto ti costa la squadra in un anno</h2>
+  <label>Costo azienda di ogni persona, per un anno
+    <span class="hint">Stipendio lordo + contributi + TFR. Lo trovi nei cedolini o lo chiedi al consulente del lavoro.</span></label>
+  <div id="persone"></div>
+  <button class="agg" type="button" onclick="aggiungi()">+ Aggiungi una persona</button>
+
+  <label for="mezzi">Furgone e mezzi della squadra, in un anno
+    <span class="hint">Rata o noleggio, gasolio, assicurazione, bollo, manutenzione.</span></label>
+  <div class="campo"><input id="mezzi" inputmode="decimal" placeholder="0"><span class="u">€</span></div>
+
+  <label for="attrezzi">Attrezzi, DPI e consumabili, in un anno
+    <span class="hint">Quello che serve alla squadra per lavorare. Non i materiali che rivendi al cliente.</span></label>
+  <div class="campo"><input id="attrezzi" inputmode="decimal" placeholder="0"><span class="u">€</span></div>
+</div>
+
+<div class="card">
+  <div class="step">Passo 2 di 3</div>
+  <h2>Quante ore finiscono davvero in fattura</h2>
+  <label for="orePagate">Ore pagate a ogni persona in un anno
+    <span class="hint">Quelle in busta paga. Esempio: 40 ore a settimana per 52 settimane = 2.080.</span></label>
+  <div class="campo"><input id="orePagate" inputmode="decimal" placeholder="es. 2.080"><span class="u">ore</span></div>
+
+  <label for="orePerse">Di queste, quante non lavora
+    <span class="hint">Ferie, permessi, malattia, festivi, giorni di pioggia. Dai cedolini.</span></label>
+  <div class="campo"><input id="orePerse" inputmode="decimal" placeholder="0"><span class="u">ore</span></div>
+
+  <label for="giornata">Quante ore dura una giornata di lavoro</label>
+  <div class="campo"><input id="giornata" inputmode="decimal" placeholder="es. 8"><span class="u">ore</span></div>
+
+  <label for="oreMorte">Di quella giornata, quante ore non metti in fattura
+    <span class="hint">Viaggio, carico del materiale, attese in cantiere, lavori rifatti.</span></label>
+  <div class="campo"><input id="oreMorte" inputmode="decimal" placeholder="0"><span class="u">ore</span></div>
+</div>
+
+<div class="card">
+  <div class="step">Passo 3 di 3</div>
+  <h2>Il prezzo che fai</h2>
+  <label for="prezzo">Prezzo di un'ora di manodopera nei tuoi preventivi</label>
+  <div class="campo"><input id="prezzo" inputmode="decimal" placeholder="0"><span class="u">€/ora</span></div>
+</div>
+
+<div class="card ris">
+  <div class="step" style="color:#8D9BB2">Il tuo risultato</div>
+  <h2>Un'ora della tua squadra ti costa davvero</h2>
+  <div id="ris-vuoto" class="vuoto">Compila i campi gialli: il risultato compare qui.</div>
+  <div id="ris-pieno" style="display:none">
+    <div class="big" id="costoVero">–</div>
+    <div class="sub">per ogni ora che metti in fattura</div>
+    <div class="confronto">
+      <div class="box"><span>Il costo che vedi di solito: solo stipendi diviso ore in busta paga</span><b id="costoFinto">–</b></div>
+      <div class="box"><span>Le ore che fatturi davvero in un anno, tutta la squadra</span><b id="oreVere">–</b></div>
+    </div>
+    <div class="sub" style="margin-top:4px">La differenza fra i due numeri sono le ore che paghi e non fatturi, più furgone e attrezzi.</div>
+    <div id="verdetto" class="verdetto"></div>
+  </div>
+</div>
+
+<div class="card cta">
+  <h2>Mandami il tuo numero</h2>
+  <p>Scrivimi in privato su Instagram il tuo costo vero di un'ora. Ti rispondo io.</p>
+  <div class="msg" id="messaggio">Ciao Mirco, ho fatto il calcolo: un'ora della mia squadra mi costa … €.</div>
+  <button class="btn scuro" type="button" onclick="copia()" id="btnCopia">Copia il messaggio</button>
+  <a class="btn chiaro" href="https://ig.me/m/gasparottomirco" target="_blank" rel="noopener">Apri la chat con Mirco su Instagram</a>
+</div>
+
+<div class="privacy">I numeri restano sul tuo telefono: non salviamo niente.</div>
+<div class="firma">MIRCO GASPAROTTO · IMPRENDITORE VERO</div>
+</div>
+
+<script>
+var nPersone = 0;
+function fmt(x){ var s = Math.round(Math.abs(x)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); return (x < 0 ? '−' : '') + s; }
+function euro(x){ return fmt(x) + ' €'; }
+function euro2(x){ return x.toLocaleString('it-IT',{minimumFractionDigits:2,maximumFractionDigits:2}) + ' €'; }
+function num(el){
+  var v = (el.value || '').replace(/\s/g,'').replace(/€/g,'');
+  if (v.indexOf(',') >= 0) v = v.replace(/\./g,'').replace(',', '.');
+  else if (/^\d{1,3}(\.\d{3})+$/.test(v)) v = v.replace(/\./g,'');
+  var n = parseFloat(v); return isNaN(n) ? 0 : n;
+}
+function aggiungi(){
+  nPersone++;
+  var r = document.createElement('div'); r.className = 'riga';
+  r.innerHTML = '<span class="n">Persona ' + nPersone + '</span><div class="campo"><input class="persona" inputmode="decimal" placeholder="0"><span class="u">€</span></div><button type="button" aria-label="Togli">×</button>';
+  r.querySelector('button').onclick = function(){ r.remove(); rinumera(); calcola(); };
+  r.querySelector('input').oninput = calcola;
+  document.getElementById('persone').appendChild(r);
+}
+function rinumera(){
+  var rr = document.querySelectorAll('#persone .riga'); nPersone = rr.length;
+  for (var i = 0; i < rr.length; i++) rr[i].querySelector('.n').textContent = 'Persona ' + (i + 1);
+}
+function calcola(){
+  var ins = document.querySelectorAll('.persona'), costoPersone = 0, n = 0;
+  for (var i = 0; i < ins.length; i++){ var c = num(ins[i]); if (c > 0){ costoPersone += c; n++; } }
+  var mezzi = num(document.getElementById('mezzi')), attrezzi = num(document.getElementById('attrezzi'));
+  var pagate = num(document.getElementById('orePagate')), perse = num(document.getElementById('orePerse'));
+  var giornata = num(document.getElementById('giornata')), morte = num(document.getElementById('oreMorte'));
+  var prezzo = num(document.getElementById('prezzo'));
+  var pronto = n > 0 && pagate > 0 && giornata > 0 && pagate > perse && giornata > morte;
+  document.getElementById('ris-vuoto').style.display = pronto ? 'none' : 'block';
+  document.getElementById('ris-pieno').style.display = pronto ? 'block' : 'none';
+  var msg = document.getElementById('messaggio');
+  if (!pronto){ msg.textContent = 'Ciao Mirco, ho fatto il calcolo: un\'ora della mia squadra mi costa … €.'; return; }
+  var totale = costoPersone + mezzi + attrezzi;
+  var oreVere = n * (pagate - perse) * (1 - morte / giornata);
+  var costoVero = totale / oreVere;
+  var costoFinto = costoPersone / (n * pagate);
+  document.getElementById('costoVero').textContent = euro2(costoVero);
+  document.getElementById('costoFinto').textContent = euro2(costoFinto);
+  document.getElementById('oreVere').textContent = fmt(oreVere);
+  var v = document.getElementById('verdetto');
+  if (prezzo > 0){
+    var diff = prezzo - costoVero, anno = diff * oreVere;
+    if (diff < 0){
+      v.className = 'verdetto male';
+      v.innerHTML = 'Su ogni ora che fatturi a ' + euro2(prezzo) + ' ci rimetti <b>' + euro2(-diff) + '</b>.<br>In un anno sono <b>' + euro(-anno) + '</b> che paghi tu.';
+    } else {
+      v.className = 'verdetto bene';
+      v.innerHTML = 'Su ogni ora che fatturi a ' + euro2(prezzo) + ' ti restano <b>' + euro2(diff) + '</b>.<br>In un anno sono <b>' + euro(anno) + '</b>: con questi paghi ufficio, sede, te stesso e l\'utile.';
+    }
+    v.style.display = 'block';
+    msg.textContent = 'Ciao Mirco, ho fatto il calcolo: un\'ora della mia squadra mi costa ' + euro2(costoVero) + ' e nei preventivi la metto a ' + euro2(prezzo) + '.';
+  } else {
+    v.style.display = 'none';
+    msg.textContent = 'Ciao Mirco, ho fatto il calcolo: un\'ora della mia squadra mi costa ' + euro2(costoVero) + '.';
+  }
+}
+function copia(){
+  var t = document.getElementById('messaggio').textContent, b = document.getElementById('btnCopia');
+  function fatto(){ b.textContent = 'Copiato ✓ Ora incollalo nella chat'; setTimeout(function(){ b.textContent = 'Copia il messaggio'; }, 3000); }
+  if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(fatto, function(){ vecchio(t); fatto(); }); }
+  else { vecchio(t); fatto(); }
+}
+function vecchio(t){ var a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch(e){} a.remove(); }
+aggiungi(); aggiungi(); aggiungi();
+var tutti = document.querySelectorAll('input');
+for (var i = 0; i < tutti.length; i++) tutti[i].oninput = calcola;
+</script>
+</body>
+</html>
