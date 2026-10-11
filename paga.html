@@ -173,7 +173,7 @@ var ZERO = ['Non ti stai pagando poco: stai lavorando gratis.',
   'Leggi qui sotto: il tuo caso è più comune di quanto pensi.'];
 
 var RAMI = {
-  compenso: { nome: 'il compenso', titolo: 'Il numero che ti sta fregando è il compenso.', d: [
+  compenso: { nome: 'il problema più grosso è quanto mi pago, non quanto lavoro', titolo: 'Il numero che ti sta fregando è il compenso.', d: [
       'Guarda la simulazione qui sotto. Anche se domani dimezzassi le ore o ti prendessi un mese di ferie, il tuo numero resterebbe a terra.',
       'Il problema non è quanto lavori: è quanto arriva a TE per ogni ora che lavori.',
       'Quando il numero rotto è il compenso, la causa sta quasi sempre in due posti: prezzi che non pagano il rischio e margine che si perde per strada senza che tu lo veda.',
@@ -181,7 +181,7 @@ var RAMI = {
     m: ['Metti il tuo compenso come costo fisso e pagati per primo.',
       "Significa che il tuo stipendio entra nei costi come l'affitto e le buste paga: si decide prima, non si raccoglie dopo, se avanza.",
       'Poi trova dove perdi margine: c\'è quasi sempre un cliente, un prodotto o una commessa che stai lavorando in pareggio, o in perdita, senza saperlo.'] },
-  ore: { nome: 'le ore al giorno', titolo: 'Il numero che ti sta fregando sono le ore: giornate troppo lunghe.', d: [
+  ore: { nome: 'il problema più grosso sono le ore: faccio giornate troppo lunghe', titolo: 'Il numero che ti sta fregando sono le ore: giornate troppo lunghe.', d: [
       'Guarda la simulazione qui sotto: il salto più grande non lo fa il compenso. Lo fanno le ore delle tue giornate.',
       "Tradotto: l'azienda un compenso vero te lo darebbe anche. Sei tu che lo stai diluendo in giornate infinite.",
       'Preventivi, telefonate, incendi da spegnere: fai il dipendente più sfruttato della tua azienda, mentre il lavoro da imprenditore, decidere coi numeri, non lo fa nessuno.',
@@ -189,7 +189,7 @@ var RAMI = {
     m: ['Separa le attività che SOLO tu puoi fare da quelle che fai per abitudine.',
       'Per due settimane segna tutto quello che fai: preventivi, mail, riunioni, telefonate. Scoprirai che più di metà delle tue ore sono attività da 10-15 € l\'ora, che fai tu solo perché «faccio prima a farle io».',
       'Sono le prime da passare ad altri.'] },
-  stacco: { nome: 'lo stacco (giorni e ferie)', titolo: 'Il numero che ti sta fregando è lo stacco: lavori quasi tutti i giorni e le ferie non arrivano mai.', d: [
+  stacco: { nome: 'il problema più grosso è che non stacco mai: lavoro quasi tutti i giorni e senza ferie', titolo: 'Il numero che ti sta fregando è lo stacco: lavori quasi tutti i giorni e le ferie non arrivano mai.', d: [
       'Guarda la simulazione qui sotto: lavorare praticamente tutti i giorni, tutte le settimane, schiaccia il tuo numero più di tutto il resto.',
       "Ma giorni e ferie sono solo il sintomo. Se non puoi staccare mai, l'azienda sei tu: tutto passa da te, decidi tu, firmi tu.",
       "Te lo dico dritto, da imprenditore a imprenditore: se l'azienda non regge 4 settimane senza di te, non è un'azienda. È un lavoro mal pagato."],
@@ -204,6 +204,7 @@ function calcola(){
   var e = '';
   if (!vuoto){
     if (c < 0) e = 'Il compenso non può essere negativo: se non ti paghi, scrivi 0.';
+    else if (c > 0 && c < 1000) e = 'Hai scritto ' + c + ' €: il compenso va scritto per intero, per tutto l\'anno. Ad esempio 35.000, non 35.';
     else if (og <= 0 || og > 16) e = 'Le ore al giorno devono essere fra 1 e 16.';
     else if (gg <= 0 || gg > 7) e = 'I giorni a settimana devono essere fra 1 e 7.';
     else if (f < 0 || f > 20) e = 'Le settimane di ferie devono essere fra 0 e 20.';
@@ -259,7 +260,7 @@ function calcola(){
   }).join('');
 
   msg.textContent = 'Ciao Mirco, ho fatto il quiz della paga oraria: mi pago ' + eh(x) + " l'ora" +
-    (tuttoOk ? ' e i 4 numeri sono a posto.' : '. Il mio numero rotto: ' + r.nome + '.');
+    (tuttoOk ? ' e i miei 4 numeri sono già a posto.' : '. Secondo il quiz ' + r.nome + '.');
 }
 function copia(){
   var t = document.getElementById('messaggio').textContent, b = document.getElementById('btnCopia');
