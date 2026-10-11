@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quanto ti paghi davvero</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--blu:#0E1B2E;--blu2:#16263F;--giallo:#FFD43B;--testo:#0E1B2E;--grigio:#5B6575;--linea:#E3E7EE;--fondo:#F4F6FA;--rosso:#D92D20;--verde:#12805C}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--fondo);color:var(--testo);font-family:Inter,system-ui,sans-serif;font-size:16px;line-height:1.45}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 40px}
+header{background:var(--blu);color:#fff;padding:28px 20px 30px;border-radius:0 0 22px 22px;margin:0 -16px 20px}
+.tag{display:inline-block;background:var(--giallo);color:var(--blu);font:700 12px Archivo,sans-serif;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:99px}
+h1{font:900 30px/1.08 Archivo,sans-serif;margin:14px 0 10px;letter-spacing:-.01em}
+h1 em{font-style:normal;color:var(--giallo)}
+header p{margin:0;color:#C9D2E0;font-size:15.5px}
+.card{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:20px 18px;margin-bottom:14px}
+.step{font:700 12px Archivo,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--grigio);margin-bottom:4px}
+h2{font:800 20px/1.2 Archivo,sans-serif;margin:0 0 14px}
+label{display:block;font-weight:600;font-size:15px;margin:14px 0 6px}
+label:first-of-type{margin-top:0}
+.hint{display:block;font-weight:400;color:var(--grigio);font-size:13.5px;margin-top:2px}
+.campo{position:relative}
+input{width:100%;font:600 18px Inter,sans-serif;color:var(--testo);background:#FFFBEA;border:2px solid #F3E3A0;border-radius:12px;padding:12px 44px 12px 14px;outline:none;-moz-appearance:textfield}
+input::-webkit-outer-spin-button,input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+input:focus{border-color:var(--giallo);background:#fff}
+.u{position:absolute;right:14px;top:50%;transform:translateY(-50%);color:var(--grigio);font-weight:600;font-size:14px;pointer-events:none}
+.riga{display:flex;gap:10px;align-items:center;margin-bottom:8px}
+.riga .n{flex:0 0 74px;font-weight:600;font-size:14px;color:var(--grigio)}
+.riga .campo{flex:1}
+.riga button{flex:0 0 36px;height:36px;border:0;border-radius:10px;background:var(--fondo);color:var(--grigio);font-size:18px;cursor:pointer}
+.agg{border:2px dashed var(--linea);background:none;border-radius:12px;width:100%;padding:11px;font:600 15px Inter,sans-serif;color:var(--blu);cursor:pointer;margin-top:4px}
+.ris{background:var(--blu);color:#fff;border:0}
+.ris h2{color:#fff}
+.big{font:900 46px/1 Archivo,sans-serif;color:var(--giallo);margin:6px 0 4px}
+.sub{color:#C9D2E0;font-size:14.5px}
+.confronto{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 6px}
+.box{background:var(--blu2);border-radius:14px;padding:12px}
+.box b{display:block;font:800 22px Archivo,sans-serif;margin-top:4px}
+.box span{font-size:13px;color:#C9D2E0}
+.verdetto{border-radius:14px;padding:14px;margin-top:12px;font-weight:600;font-size:15.5px}
+.verdetto.male{background:#3A1717;color:#FFD9D6}
+.verdetto.bene{background:#0F2E25;color:#CDF3E3}
+.verdetto b{font-family:Archivo,sans-serif;font-size:19px}
+.vuoto{color:#C9D2E0;font-size:15px;margin:6px 0 0}
+.cta{background:var(--giallo);border:0}
+.cta h2{margin-bottom:8px}
+.cta p{margin:0 0 14px}
+.msg{background:#fff;border-radius:12px;padding:12px 14px;font-weight:600;margin-bottom:12px}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:14px;padding:15px;font:800 16px Archivo,sans-serif;cursor:pointer}
+.btn.scuro{background:var(--blu);color:#fff}
+.btn.chiaro{background:transparent;color:var(--blu);border:2px solid var(--blu);margin-top:10px}
+[hidden]{display:none!important}
+.torna{background:#fff;border-radius:14px;padding:14px;margin:10px 0 0;font-weight:600;text-align:center;line-height:1.4}
+.privacy{text-align:center;color:var(--grigio);font-size:13px;margin-top:18px}
+.firma{text-align:center;font:700 13px Archivo,sans-serif;color:var(--blu);margin-top:6px;letter-spacing:.04em}
+</style>
+</head>
+<body>
+<style>
+.sim{margin-top:14px}
+.voce{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:10px 0;border-top:1px solid #24364F}
+.voce:first-child{border-top:0}
+.voce .nome{font-weight:600;font-size:15px}
+.voce .val{font:800 18px Archivo,sans-serif;text-align:right;white-space:nowrap}
+.voce.top .nome,.voce.top .val{color:var(--giallo)}
+.voce .nota{display:block;font:500 12.5px Inter,sans-serif;color:#C9D2E0}
+.testo p{margin:0 0 10px}
+.testo p:last-child{margin-bottom:0}
+.titolo-v{font:900 22px/1.15 Archivo,sans-serif;margin:4px 0 10px}
+.mossa{background:var(--fondo);border-radius:14px;padding:14px;margin-top:12px}
+.mossa b{display:block;font:800 13px Archivo,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio);margin-bottom:6px}
+.mossa p{margin:0 0 8px}.mossa p:last-child{margin:0}
+.err{color:var(--rosso);font-size:13.5px;margin-top:6px}
+</style>
+<div class="wrap">
+<header>
+  <span class="tag">Regalo di Mirco · Paga oraria</span>
+  <h1>Ti paghi da <em>operaio</em> o da <em>imprenditore</em>?</h1>
+  <p>Bastano 4 numeri che sai a memoria: niente bilancio, niente commercialista. In 60 secondi scopri la tua paga oraria reale, quale dei 4 numeri te la tiene a terra e la prima mossa per sistemarlo.</p>
+</header>
+
+<div class="card">
+  <div class="step">I tuoi 4 numeri</div>
+  <h2>Rispondi a memoria</h2>
+  <label for="c">1. Quanto ti sei pagato TU negli ultimi 12 mesi?
+    <span class="hint">Il netto arrivato a te: stipendi, prelievi, dividendi. Non è il fatturato e non è l'utile dell'azienda. Se non ti paghi, scrivi 0.</span></label>
+  <div class="campo"><input id="c" inputmode="decimal" placeholder="es. 35.000"><span class="u">€</span></div>
+  <label for="og">2. Quante ore lavori in un giorno normale?</label>
+  <div class="campo"><input id="og" inputmode="decimal" placeholder="es. 11"><span class="u">ore</span></div>
+  <label for="gg">3. Quanti giorni lavori a settimana?
+    <span class="hint">Conta anche il sabato mattina e le domeniche passate sui preventivi.</span></label>
+  <div class="campo"><input id="gg" inputmode="decimal" placeholder="es. 6"><span class="u">giorni</span></div>
+  <label for="f">4. Quante settimane di ferie vere ti sei preso nell'ultimo anno?
+    <span class="hint">Vere: telefono spento, nessuno che ti chiama. Se non ne hai fatte, scrivi 0.</span></label>
+  <div class="campo"><input id="f" inputmode="decimal" placeholder="es. 0"><span class="u">settimane</span></div>
+  <div class="err" id="err" hidden></div>
+</div>
+
+<div class="card ris">
+  <div class="step" style="color:#8D9BB2">Il tuo risultato</div>
+  <div id="ris-vuoto" class="vuoto">Rispondi alle 4 domande: il risultato compare qui.</div>
+  <div id="ris-pieno" hidden>
+    <div class="sub">La tua paga oraria reale è</div>
+    <div class="big" id="x">–</div>
+    <div class="titolo-v" id="verdTitolo"></div>
+    <div class="testo sub" id="verdTesto"></div>
+  </div>
+</div>
+
+<div class="card" id="diag" hidden>
+  <div class="step">La diagnosi</div>
+  <h2 id="diagTitolo"></h2>
+  <div class="testo" id="diagTesto"></div>
+  <div class="card ris" style="margin:14px 0 0;padding:14px 16px">
+    <div class="step" style="color:#8D9BB2">La tua simulazione</div>
+    <div class="sim" id="sim"></div>
+  </div>
+  <div class="mossa"><b>La prima mossa</b><div id="mossa"></div></div>
+</div>
+
+<div class="card cta">
+  <h2>Mandami il tuo risultato</h2>
+  <p>Scrivimi in privato su Instagram quanto ti paghi e qual è il tuo numero rotto. Ti rispondo io.</p>
+  <div class="msg" id="messaggio">Ciao Mirco, ho fatto il quiz della paga oraria: …</div>
+  <button class="btn scuro" type="button" onclick="copia()" id="btnCopia">Copia il messaggio</button>
+  <a class="btn chiaro" id="apriChat" href="https://ig.me/m/gasparottomirco" target="_blank" rel="noopener">Apri la chat con Mirco su Instagram</a>
+  <p class="torna" id="tornaChat" hidden>Ora chiudi questa pagina con la <b>✕</b> in alto: torni nella chat con Mirco. Incolla lì il messaggio.</p>
+</div>
+
+<div class="privacy">I numeri restano sul tuo telefono: non salviamo niente.</div>
+<div class="firma">MIRCO GASPAROTTO · IMPRENDITORE VERO</div>
+</div>
+
+<script>
+var DENTRO_APP = /Instagram|FBAN|FBAV|FB_IAB|FBIOS/i.test(navigator.userAgent || '');
+// benchmark del manuale «Compenso 100k»: 100.000 € netti, 7,5 ore, 5 giorni, 4 settimane di ferie (= 1.800 ore, 55 €/h)
+var B = { c: 100000, og: 7.5, gg: 5, f: 4 };
+function num(id){
+  var v = (document.getElementById(id).value || '').replace(/\s/g,'').replace(/€/g,'');
+  if (v === '') return NaN;
+  if (v.indexOf(',') >= 0) v = v.replace(/\./g,'').replace(',', '.');
+  else if (/^\d{1,3}(\.\d{3})+$/.test(v)) v = v.replace(/\./g,'');
+  return parseFloat(v);
+}
+function eh(x){ return x.toFixed(2).replace('.', ',') + ' €'; }
+function paga(c, og, gg, f){ return c / (og * gg * (52 - f)); }
+function p(arr){ return arr.map(function(t){ return '<p>' + t + '</p>'; }).join(''); }
+
+var FASCE = [
+  { max: 10.40, t: 'Ti paghi meno del tuo operaio specializzato.', d: [
+    "Un operaio specializzato costa 10,40 € l'ora. Tu sei sotto, e in più hai le firme in banca e tutto il rischio sulle spalle.",
+    'Non sei un caso isolato: 3 imprenditori su 5 guadagnano meno dei loro dipendenti.',
+    'Tu adesso lo sai. Ed è il primo passo per sistemarlo.'] },
+  { max: 25, t: 'Ti paghi da impiegato, non da imprenditore.', d: [
+    "Solo che l'impiegato alle sei spegne tutto, ha le ferie pagate e la tredicesima.",
+    'Tu hai le fideiussioni, le notti a pensare agli stipendi degli altri e il telefono acceso anche in vacanza.',
+    'Stessa paga, tutto il rischio: il conto non torna.'] },
+  { max: 55, t: 'Ti paghi da quadro o da dirigente, ma il rischio lo porti tu.', d: [
+    'Sei sopra la media, e va detto.',
+    "Ma un dirigente con questa paga non ha firmato garanzie personali e, se l'azienda chiude, si trova un altro posto. Tu no.",
+    "Per chi porta il rischio d'impresa, il minimo è un compenso da 100.000 € netti l'anno: ti manca l'ultimo gradino."] },
+  { max: Infinity, t: 'Ti paghi da imprenditore.', d: [
+    'Sei in una minoranza vera: la maggior parte di chi fa impresa questi numeri non li vede.',
+    'Adesso la domanda cambia: questo numero regge anche se ti fermi 4 settimane?',
+    "Il livello sopra non è guadagnare di più: è un'azienda che ti paga così anche senza di te."] }
+];
+var ZERO = ['Non ti stai pagando poco: stai lavorando gratis.',
+  "L'azienda paga fornitori, dipendenti e Stato. Tutti tranne te.",
+  'Leggi qui sotto: il tuo caso è più comune di quanto pensi.'];
+
+var RAMI = {
+  compenso: { nome: 'il compenso', titolo: 'Il numero che ti sta fregando è il compenso.', d: [
+      'Guarda la simulazione qui sotto. Anche se domani dimezzassi le ore o ti prendessi un mese di ferie, il tuo numero resterebbe a terra.',
+      'Il problema non è quanto lavori: è quanto arriva a TE per ogni ora che lavori.',
+      'Quando il numero rotto è il compenso, la causa sta quasi sempre in due posti: prezzi che non pagano il rischio e margine che si perde per strada senza che tu lo veda.',
+      "Oggi la tua azienda paga tutti, fornitori, dipendenti, banche e Stato, tranne chi porta il rischio: tu."],
+    m: ['Metti il tuo compenso come costo fisso e pagati per primo.',
+      "Significa che il tuo stipendio entra nei costi come l'affitto e le buste paga: si decide prima, non si raccoglie dopo, se avanza.",
+      'Poi trova dove perdi margine: c\'è quasi sempre un cliente, un prodotto o una commessa che stai lavorando in pareggio, o in perdita, senza saperlo.'] },
+  ore: { nome: 'le ore al giorno', titolo: 'Il numero che ti sta fregando sono le ore: giornate troppo lunghe.', d: [
+      'Guarda la simulazione qui sotto: il salto più grande non lo fa il compenso. Lo fanno le ore delle tue giornate.',
+      "Tradotto: l'azienda un compenso vero te lo darebbe anche. Sei tu che lo stai diluendo in giornate infinite.",
+      'Preventivi, telefonate, incendi da spegnere: fai il dipendente più sfruttato della tua azienda, mentre il lavoro da imprenditore, decidere coi numeri, non lo fa nessuno.',
+      'Il tuo problema si chiama delega.'],
+    m: ['Separa le attività che SOLO tu puoi fare da quelle che fai per abitudine.',
+      'Per due settimane segna tutto quello che fai: preventivi, mail, riunioni, telefonate. Scoprirai che più di metà delle tue ore sono attività da 10-15 € l\'ora, che fai tu solo perché «faccio prima a farle io».',
+      'Sono le prime da passare ad altri.'] },
+  stacco: { nome: 'lo stacco (giorni e ferie)', titolo: 'Il numero che ti sta fregando è lo stacco: lavori quasi tutti i giorni e le ferie non arrivano mai.', d: [
+      'Guarda la simulazione qui sotto: lavorare praticamente tutti i giorni, tutte le settimane, schiaccia il tuo numero più di tutto il resto.',
+      "Ma giorni e ferie sono solo il sintomo. Se non puoi staccare mai, l'azienda sei tu: tutto passa da te, decidi tu, firmi tu.",
+      "Te lo dico dritto, da imprenditore a imprenditore: se l'azienda non regge 4 settimane senza di te, non è un'azienda. È un lavoro mal pagato."],
+    m: ['Riprenditi un giorno intero a settimana, da subito. Poi metti in calendario 4 settimane di stacco vero entro i prossimi 6 mesi e trattale come un test.',
+      'Scrivi la lista di tutto quello che «senza di me si ferma»: ogni riga è un processo da scrivere o una persona da responsabilizzare.'] }
+};
+
+function calcola(){
+  var c = num('c'), og = num('og'), gg = num('gg'), f = num('f');
+  var err = document.getElementById('err'), msg = document.getElementById('messaggio');
+  var vuoto = [c, og, gg, f].some(function(v){ return isNaN(v); });
+  var e = '';
+  if (!vuoto){
+    if (c < 0) e = 'Il compenso non può essere negativo: se non ti paghi, scrivi 0.';
+    else if (og <= 0 || og > 16) e = 'Le ore al giorno devono essere fra 1 e 16.';
+    else if (gg <= 0 || gg > 7) e = 'I giorni a settimana devono essere fra 1 e 7.';
+    else if (f < 0 || f > 20) e = 'Le settimane di ferie devono essere fra 0 e 20.';
+  }
+  err.textContent = e; err.hidden = !e;
+  var ok = !vuoto && !e;
+  document.getElementById('ris-vuoto').hidden = ok;
+  document.getElementById('ris-pieno').hidden = !ok;
+  document.getElementById('diag').hidden = !ok;
+  if (!ok){ msg.textContent = 'Ciao Mirco, ho fatto il quiz della paga oraria: …'; return; }
+
+  var x = paga(c, og, gg, f);
+  var y = {
+    compenso: paga(Math.max(c, B.c), og, gg, f),
+    ore: paga(c, Math.min(og, B.og), gg, f),
+    giorni: paga(c, og, Math.min(gg, B.gg), f),
+    ferie: paga(c, og, gg, Math.max(f, B.f))
+  };
+  document.getElementById('x').textContent = eh(x) + "/ora";
+  var fa = FASCE.filter(function(z){ return x < z.max; })[0];
+  document.getElementById('verdTitolo').textContent = c === 0 ? 'La tua paga oraria reale è zero.' : fa.t;
+  document.getElementById('verdTesto').innerHTML = p(c === 0 ? ZERO : fa.d);
+
+  // numero rotto: il fix che fa il salto più grande; a parità vince l'ordine compenso > ore > giorni/ferie
+  var stacco = Math.max(y.giorni, y.ferie);
+  var cand = [['compenso', y.compenso], ['ore', y.ore], ['stacco', stacco]];
+  var best = cand[0];
+  for (var i = 1; i < cand.length; i++) if (cand[i][1] > best[1] + 0.005) best = cand[i];
+  var tuttoOk = best[1] <= x + 0.005;
+  var r = RAMI[best[0]];
+  var diag = document.getElementById('diag');
+  if (tuttoOk){
+    document.getElementById('diagTitolo').textContent = 'I tuoi 4 numeri sono già a posto.';
+    document.getElementById('diagTesto').innerHTML = p(['Compenso, ore, giorni e ferie sono tutti al livello di chi si paga da imprenditore.', 'La prossima domanda è un\'altra: quanto vale la tua azienda senza di te?']);
+    document.getElementById('mossa').innerHTML = p(['Fai la prova delle 4 settimane: se l\'azienda regge senza di te, hai un\'azienda. Se non regge, sai da dove partire.']);
+  } else {
+    document.getElementById('diagTitolo').textContent = r.titolo;
+    document.getElementById('diagTesto').innerHTML = p(r.d);
+    document.getElementById('mossa').innerHTML = p(r.m);
+  }
+  var giorniTop = y.giorni >= y.ferie;
+  var righe = [
+    ['Oggi', x, '', false, false],
+    ['Se sistemi il compenso', y.compenso, '100.000 € netti', !tuttoOk && best[0] === 'compenso', c >= B.c],
+    ['Se sistemi le ore al giorno', y.ore, '7,5 ore', !tuttoOk && best[0] === 'ore', og <= B.og],
+    ['Se sistemi i giorni', y.giorni, '5 giorni a settimana', !tuttoOk && best[0] === 'stacco' && giorniTop, gg <= B.gg],
+    ['Se sistemi le ferie', y.ferie, '4 settimane', !tuttoOk && best[0] === 'stacco' && !giorniTop, f >= B.f]
+  ];
+  document.getElementById('sim').innerHTML = righe.map(function(q, k){
+    var nota = k === 0 ? '' : (q[4] ? 'già a posto' : 'con ' + q[2]);
+    if (q[3]) nota += ' · il salto più grande: parti da qui';
+    return '<div class="voce' + (q[3] ? ' top' : '') + '"><span class="nome">' + q[0] + (nota ? '<span class="nota">' + nota + '</span>' : '') + '</span><span class="val">' + eh(q[1]) + '</span></div>';
+  }).join('');
+
+  msg.textContent = 'Ciao Mirco, ho fatto il quiz della paga oraria: mi pago ' + eh(x) + " l'ora" +
+    (tuttoOk ? ' e i 4 numeri sono a posto.' : '. Il mio numero rotto: ' + r.nome + '.');
+}
+function copia(){
+  var t = document.getElementById('messaggio').textContent, b = document.getElementById('btnCopia');
+  function fatto(){ b.textContent = 'Copiato ✓ Ora incollalo nella chat'; setTimeout(function(){ b.textContent = 'Copia il messaggio'; }, 3000); }
+  if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(fatto, function(){ vecchio(t); fatto(); }); }
+  else { vecchio(t); fatto(); }
+}
+function vecchio(t){ var a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch(e){} a.remove(); }
+['c','og','gg','f'].forEach(function(id){ document.getElementById(id).oninput = calcola; });
+if (DENTRO_APP){ document.getElementById('apriChat').hidden = true; document.getElementById('tornaChat').hidden = false; }
+</script>
+</body>
+</html>
