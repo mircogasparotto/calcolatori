@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Il conto servizio per servizio</title>
+<title>Il conto del tuo locale</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -61,66 +61,70 @@ input:focus{border-color:var(--giallo);background:#fff}
 </head>
 <body>
 <style>
-.serv{border:1px solid var(--linea);border-radius:14px;padding:14px;margin-top:12px}
-.serv h3{font:800 17px Archivo,sans-serif;margin:0}
-.serv label{margin-top:10px}
-.lista{margin-top:14px}
-.voce{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:11px 0;border-top:1px solid #24364F}
+.sim{margin-top:14px}
+.voce{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:10px 0;border-top:1px solid #24364F}
 .voce:first-child{border-top:0}
-.voce .nome{font-weight:600}
-.voce .val{font:800 19px Archivo,sans-serif;text-align:right}
-.voce .pc{display:block;font:500 12.5px Inter,sans-serif;color:#C9D2E0}
-.neg{color:#FF8A80}.pos{color:var(--giallo)}
+.voce .nome{font-weight:600;font-size:15px}
+.voce .val{font:800 18px Archivo,sans-serif;text-align:right;white-space:nowrap}
+.voce.top .nome,.voce.top .val{color:var(--giallo)}
+.voce .nota{display:block;font:500 12.5px Inter,sans-serif;color:#C9D2E0}
+.neg{color:#FF8A80!important}
+.testo p{margin:0 0 10px}
+.testo p:last-child{margin-bottom:0}
+.titolo-v{font:900 22px/1.15 Archivo,sans-serif;margin:4px 0 10px}
+.mossa{background:var(--fondo);border-radius:14px;padding:14px;margin-top:12px}
+.mossa b{display:block;font:800 13px Archivo,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--grigio);margin-bottom:6px}
+.mossa p{margin:0 0 8px}.mossa p:last-child{margin:0}
+.err{color:var(--rosso);font-size:13.5px;margin-top:6px}
 </style>
 <div class="wrap">
 <header>
   <span class="tag">Regalo di Mirco · Ristorazione</span>
-  <h1>Il conto <em>servizio per servizio</em></h1>
-  <p>Colazione, pranzo, cena, asporto: quale ti fa guadagnare e quale ti fa solo lavorare? 5 minuti, con i numeri di un mese.</p>
+  <h1>Il conto del tuo <em>locale</em></h1>
+  <p>Il locale è pieno, ma a fine mese non resta niente? Bastano 4 numeri di un mese normale, anche a occhio. In 60 secondi vedi dove finiscono i tuoi incassi e quanto ti resta davvero ogni 100 €.</p>
 </header>
 
 <div class="card">
-  <div class="step">Passo 1 di 3</div>
-  <h2>Quanto ti costa un'ora di personale</h2>
-  <label for="costoOra">Costo azienda di un'ora di lavoro
-    <span class="hint">Costo azienda di un dipendente in un anno (stipendio lordo + contributi + TFR) diviso le ore che lavora. Esempio: 30.000 € ÷ 1.800 ore = 16,67 €.</span></label>
-  <div class="campo"><input id="costoOra" inputmode="decimal" placeholder="0"><span class="u">€/ora</span></div>
-</div>
-
-<div class="card">
-  <div class="step">Passo 2 di 3</div>
-  <h2>I numeri di un mese, servizio per servizio</h2>
-  <p class="hint" style="margin:0">Compila solo i servizi che fai. Prendi un mese normale.</p>
-  <div id="servizi"></div>
-</div>
-
-<div class="card">
-  <div class="step">Passo 3 di 3</div>
-  <h2>Le spese fisse del locale</h2>
-  <label for="fissi">Spese fisse in un mese
-    <span class="hint">Affitto, luce, gas, acqua, assicurazioni, commercialista, rate. Quelle che paghi anche a locale chiuso.</span></label>
-  <div class="campo"><input id="fissi" inputmode="decimal" placeholder="0"><span class="u">€</span></div>
+  <div class="step">I tuoi 4 numeri</div>
+  <h2>Un mese normale, anche a occhio</h2>
+  <label for="inc">1. Quanto incassi in un mese?
+    <span class="hint">Tutto: sala, banco, asporto, delivery.</span></label>
+  <div class="campo"><input id="inc" inputmode="decimal" placeholder="es. 40.000"><span class="u">€</span></div>
+  <label for="cibo">2. Quanto spendi di cibo e bevande in un mese?
+    <span class="hint">Le fatture dei fornitori di materia prima.</span></label>
+  <div class="campo"><input id="cibo" inputmode="decimal" placeholder="es. 13.000"><span class="u">€</span></div>
+  <label for="pers">3. Quanto ti costa il personale in un mese?
+    <span class="hint">Stipendi più contributi, sala e cucina. Non contare te.</span></label>
+  <div class="campo"><input id="pers" inputmode="decimal" placeholder="es. 14.000"><span class="u">€</span></div>
+  <label for="fissi">4. Quanto paghi di spese fisse in un mese?
+    <span class="hint">Affitto, luce, gas, acqua, rate, assicurazioni, commercialista: quelle che paghi anche a locale chiuso.</span></label>
+  <div class="campo"><input id="fissi" inputmode="decimal" placeholder="es. 8.000"><span class="u">€</span></div>
+  <div class="err" id="err" hidden></div>
 </div>
 
 <div class="card ris">
   <div class="step" style="color:#8D9BB2">Il tuo risultato</div>
-  <h2>Quanto ti lascia ogni servizio in un mese</h2>
-  <div class="sub">Quello che incassi, meno cibo e bevande, personale e costi del servizio.</div>
-  <div id="ris-vuoto" class="vuoto">Compila almeno un servizio e il costo dell'ora: il risultato compare qui.</div>
-  <div id="ris-pieno" style="display:none">
-    <div class="lista" id="lista"></div>
-    <div class="confronto">
-      <div class="box"><span>Tutti i servizi insieme ti lasciano</span><b id="totServ">–</b></div>
-      <div class="box"><span>Tolte le spese fisse, a fine mese ti resta</span><b id="resta">–</b></div>
-    </div>
-    <div id="verdetto" class="verdetto"></div>
+  <div id="ris-vuoto" class="vuoto">Rispondi alle 4 domande: il risultato compare qui.</div>
+  <div id="ris-pieno" hidden>
+    <div class="sub">Su 100 € incassati, a te restano</div>
+    <div class="big" id="x">–</div>
+    <div class="titolo-v" id="verdTitolo"></div>
+    <div class="sim" id="sim"></div>
+    <div class="testo sub" id="verdTesto" style="margin-top:12px"></div>
   </div>
+</div>
+
+<div class="card" id="diag" hidden>
+  <div class="step">La diagnosi</div>
+  <h2 id="diagTitolo"></h2>
+  <div class="testo" id="diagTesto"></div>
+  <div class="mossa"><b>La prima mossa</b><div id="mossa"></div></div>
 </div>
 
 <div class="card cta">
   <h2>Mandami il tuo risultato</h2>
-  <p>Scrivimi in privato su Instagram quale servizio ti lascia di più e quale di meno. Ti rispondo io.</p>
-  <div class="msg" id="messaggio">Ciao Mirco, ho fatto il conto servizio per servizio: …</div>
+  <p>Scrivimi in privato su Instagram quanto ti resta su 100 € e dove finisce la fetta più grossa. Ti rispondo io.</p>
+  <div class="msg" id="messaggio">Ciao Mirco, ho fatto il conto del mio locale: …</div>
   <button class="btn scuro" type="button" onclick="copia()" id="btnCopia">Copia il messaggio</button>
   <a class="btn chiaro" id="apriChat" href="https://ig.me/m/gasparottomirco" target="_blank" rel="noopener">Apri la chat con Mirco su Instagram</a>
   <p class="torna" id="tornaChat" hidden>Ora chiudi questa pagina con la <b>✕</b> in alto: torni nella chat con Mirco. Incolla lì il messaggio.</p>
@@ -132,71 +136,106 @@ input:focus{border-color:var(--giallo);background:#fff}
 
 <script>
 var DENTRO_APP = /Instagram|FBAN|FBAV|FB_IAB|FBIOS/i.test(navigator.userAgent || '');
-var SERVIZI = ['Colazione', 'Pranzo', 'Cena', 'Asporto e delivery'];
-function fmt(x){ var s = Math.round(Math.abs(x)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); return (x < 0 ? '−' : '') + s; }
-function euro(x){ return fmt(x) + ' €'; }
-function num(el){
-  var v = (el.value || '').replace(/\s/g,'').replace(/€/g,'');
+function num(id){
+  var v = (document.getElementById(id).value || '').replace(/\s/g,'').replace(/€/g,'');
+  if (v === '') return NaN;
   if (v.indexOf(',') >= 0) v = v.replace(/\./g,'').replace(',', '.');
   else if (/^\d{1,3}(\.\d{3})+$/.test(v)) v = v.replace(/\./g,'');
-  var n = parseFloat(v); return isNaN(n) ? 0 : n;
+  return parseFloat(v);
 }
-function campo(id, etichetta, hint, unita){
-  return '<label for="' + id + '">' + etichetta + (hint ? '<span class="hint">' + hint + '</span>' : '') + '</label>' +
-    '<div class="campo"><input id="' + id + '" inputmode="decimal" placeholder="0"><span class="u">' + unita + '</span></div>';
-}
-var box = document.getElementById('servizi');
-for (var i = 0; i < SERVIZI.length; i++){
-  var d = document.createElement('div'); d.className = 'serv';
-  d.innerHTML = '<h3>' + SERVIZI[i] + '</h3>' +
-    campo('inc' + i, 'Incasso in un mese', '', '€') +
-    campo('cibo' + i, 'Cibo e bevande usati', 'Quanto hai speso di materia prima per questo servizio.', '€') +
-    campo('ore' + i, 'Ore di personale', 'Sala e cucina, sommando tutte le persone. Esempio: 4 persone per 4 ore per 26 giorni = 416.', 'ore') +
-    campo('altri' + i, 'Altri costi del servizio', i === 3 ? 'Commissioni delle app di consegna, imballaggi, rider.' : 'Tovaglie, lavanderia, extra legati solo a questo servizio.', '€');
-  box.appendChild(d);
-}
+function fmt(x){ var s = Math.round(Math.abs(x)).toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.'); return (x < 0 ? '−' : '') + s; }
+function euro(x){ return fmt(x) + ' €'; }
+function p(arr){ return arr.map(function(t){ return '<p>' + t + '</p>'; }).join(''); }
+
+var FETTE = {
+  cibo: { nome: 'se la prende la materia prima', breve: 'cibo e bevande', titolo: 'La fetta più grossa se la prende la materia prima.', d: [
+      'Dei tuoi incassi, la parte più grande va ai fornitori.',
+      'Quando succede, quasi sempre ci sono piatti che vendi tanto e che ti lasciano poco: prezzi fatti a occhio, porzioni che crescono, sprechi in cucina che nessuno misura.',
+      'Pieno non vuol dire margine: ogni piatto venduto sotto costo è lavoro gratis.'],
+    m: ['Prendi i 10 piatti che vendi di più e per ognuno scrivi quanto ti costano gli ingredienti e a quanto lo vendi.',
+      'Parti dai più venduti che ti lasciano meno: è lì che si recupera margine senza che il cliente se ne accorga.'] },
+  pers: { nome: 'se la prende il personale', breve: 'personale', titolo: 'La fetta più grossa se la prende il personale.', d: [
+      'Dei tuoi incassi, la parte più grande va in stipendi e contributi.',
+      'Non vuol dire per forza che hai troppa gente: spesso la squadra è giusta nelle ore di punta e sovradimensionata nelle ore vuote.',
+      "C'è quasi sempre un servizio, o una fascia oraria, che tiene aperta la squadra intera e incassa poco."],
+    m: ['Per due settimane segna, servizio per servizio, quante persone c\'erano e quanto hai incassato.',
+      'Dividi l\'incasso per le ore lavorate: vedi subito quale servizio ti fa solo lavorare. Da lì decidi turni, orari e menù.'] },
+  fissi: { nome: 'se la prendono le spese fisse', breve: 'spese fisse', titolo: 'La fetta più grossa se la prendono le spese fisse.', d: [
+      'Dei tuoi incassi, la parte più grande va in affitto, utenze e rate: soldi che escono anche a locale chiuso.',
+      'Vuol dire che il locale lavora troppo poco rispetto a quanto costa tenerlo aperto.',
+      'Il numero che devi conoscere a memoria è il tuo pareggio: quanto devi incassare ogni mese prima di guadagnare il primo euro.'] ,
+    m: [] }
+};
+
 function calcola(){
-  var costoOra = num(document.getElementById('costoOra')), fissi = num(document.getElementById('fissi'));
-  var righe = [];
-  for (var i = 0; i < SERVIZI.length; i++){
-    var inc = num(document.getElementById('inc' + i));
-    if (inc <= 0) continue;
-    var costi = num(document.getElementById('cibo' + i)) + num(document.getElementById('ore' + i)) * costoOra + num(document.getElementById('altri' + i));
-    righe.push({ nome: SERVIZI[i], inc: inc, lascia: inc - costi, pc: (inc - costi) / inc * 100 });
+  var inc = num('inc'), cibo = num('cibo'), pers = num('pers'), fissi = num('fissi');
+  var err = document.getElementById('err'), msg = document.getElementById('messaggio');
+  var vuoto = [inc, cibo, pers, fissi].some(function(v){ return isNaN(v); });
+  var e = '';
+  if (!vuoto){
+    if (inc <= 0) e = "Scrivi quanto incassi in un mese: deve essere più di 0.";
+    else if (inc < 1000) e = 'Hai scritto ' + inc + ' €: l\'incasso va scritto per intero, per tutto il mese. Ad esempio 40.000, non 40.';
+    else if (cibo < 0 || pers < 0 || fissi < 0) e = 'Le spese non possono essere negative: se una non ce l\'hai, scrivi 0.';
+    else if (cibo >= inc) e = 'Cibo e bevande non possono superare l\'incasso: controlla i numeri.';
   }
-  var pronto = righe.length > 0 && costoOra > 0;
-  document.getElementById('ris-vuoto').style.display = pronto ? 'none' : 'block';
-  document.getElementById('ris-pieno').style.display = pronto ? 'block' : 'none';
-  var msg = document.getElementById('messaggio');
-  if (!pronto){ msg.textContent = 'Ciao Mirco, ho fatto il conto servizio per servizio: …'; return; }
-  righe.sort(function(a, b){ return b.pc - a.pc; });
-  var html = '', tot = 0;
-  for (var k = 0; k < righe.length; k++){
-    var r = righe[k]; tot += r.lascia;
-    html += '<div class="voce"><span class="nome">' + r.nome + '</span><span class="val ' + (r.lascia < 0 ? 'neg' : 'pos') + '">' + euro(r.lascia) +
-      '<span class="pc">' + fmt(r.pc) + ' € ogni 100 € incassati</span></span></div>';
-  }
-  document.getElementById('lista').innerHTML = html;
-  document.getElementById('totServ').textContent = euro(tot);
-  var resta = tot - fissi;
-  document.getElementById('resta').textContent = fissi > 0 ? euro(resta) : '–';
-  var best = righe[0], worst = righe[righe.length - 1], v = document.getElementById('verdetto');
-  if (worst.lascia < 0){
-    v.className = 'verdetto male';
-    v.innerHTML = '<b>' + worst.nome + '</b> ti costa più di quello che incassi: ci rimetti <b>' + euro(-worst.lascia) + '</b> al mese, prima ancora di pagare l\'affitto.';
-  } else if (righe.length > 1){
-    v.className = 'verdetto ' + (fissi > 0 && resta < 0 ? 'male' : 'bene');
-    v.innerHTML = 'Su 100 € incassati, <b>' + best.nome.toLowerCase() + '</b> te ne lascia <b>' + Math.round(best.pc) + '</b>, <b>' + worst.nome.toLowerCase() + '</b> solo <b>' + Math.round(worst.pc) + '</b>.' +
-      (fissi > 0 && resta < 0 ? '<br>E tutti insieme non bastano a pagare le spese fisse: mancano <b>' + euro(-resta) + '</b> al mese.' : '');
+  err.textContent = e; err.hidden = !e;
+  var ok = !vuoto && !e;
+  document.getElementById('ris-vuoto').hidden = ok;
+  document.getElementById('ris-pieno').hidden = !ok;
+  document.getElementById('diag').hidden = !ok;
+  if (!ok){ msg.textContent = 'Ciao Mirco, ho fatto il conto del mio locale: …'; return; }
+
+  var resta = inc - cibo - pers - fissi;
+  var su100 = function(v){ return v / inc * 100; };
+  var x = 100 - Math.round(su100(cibo)) - Math.round(su100(pers)) - Math.round(su100(fissi));
+  var xEl = document.getElementById('x');
+  xEl.textContent = fmt(x) + ' €';
+  xEl.className = 'big' + (x < 0 ? ' neg' : '');
+
+  var titolo, testo;
+  if (resta < 0){
+    titolo = 'Ci rimetti ' + euro(-resta) + ' al mese.';
+    testo = ['Il locale incassa, ma ogni mese escono più soldi di quelli che entrano. E non hai ancora pagato te stesso né le tasse.'];
   } else {
-    v.className = 'verdetto ' + (fissi > 0 && resta < 0 ? 'male' : 'bene');
-    v.innerHTML = 'Su 100 € incassati, ' + best.nome.toLowerCase() + ' te ne lascia <b>' + Math.round(best.pc) + '</b>.' +
-      (fissi > 0 && resta < 0 ? '<br>Non basta a pagare le spese fisse: mancano <b>' + euro(-resta) + '</b> al mese.' : '');
+    titolo = 'Ti restano ' + euro(resta) + ' al mese.';
+    testo = ['Attenzione: è prima delle tasse e prima del tuo compenso. Quello che ti metti davvero in tasca è meno.'];
   }
-  if (righe.length > 1)
-    msg.textContent = 'Ciao Mirco, ho fatto il conto servizio per servizio: ' + best.nome.toLowerCase() + ' mi lascia ' + Math.round(best.pc) + ' € ogni 100 incassati, ' + worst.nome.toLowerCase() + (worst.lascia < 0 ? ' mi fa rimettere ' + Math.round(-worst.pc) + ' € ogni 100.' : ' solo ' + Math.round(worst.pc) + ' € ogni 100.');
-  else
-    msg.textContent = 'Ciao Mirco, ho fatto il conto: ' + best.nome.toLowerCase() + ' mi lascia ' + Math.round(best.pc) + ' € ogni 100 incassati.';
+  document.getElementById('verdTitolo').textContent = titolo;
+
+  var fette = [['cibo', cibo], ['pers', pers], ['fissi', fissi]];
+  fette.sort(function(a, b){ return b[1] - a[1]; });
+  var top = fette[0][0];
+  var righe = [['cibo', 'Cibo e bevande', cibo], ['pers', 'Personale', pers], ['fissi', 'Spese fisse', fissi]];
+  var somma = 0;
+  var html = righe.map(function(r){
+    var v = Math.round(su100(r[2])); somma += v;
+    return '<div class="voce' + (r[0] === top ? ' top' : '') + '"><span class="nome">' + r[1] + (r[0] === top ? '<span class="nota">la fetta più grossa</span>' : '') +
+      '</span><span class="val">' + fmt(v) + ' €</span></div>';
+  }).join('');
+  var restaR = 100 - somma;
+  html += '<div class="voce"><span class="nome">Restano a te</span><span class="val' + (restaR < 0 ? ' neg' : '') + '">' + fmt(restaR) + ' €</span></div>';
+  document.getElementById('sim').innerHTML = html;
+
+  var uno = inc / 100;
+  testo.push('Ogni euro che recuperi su 100 incassati vale <b>' + euro(uno) + '</b> al mese, cioè <b>' + euro(uno * 12) + '</b> in un anno.');
+  document.getElementById('verdTesto').innerHTML = p(testo);
+
+  var f = FETTE[top];
+  document.getElementById('diagTitolo').textContent = f.titolo;
+  document.getElementById('diagTesto').innerHTML = p(f.d);
+  var m = f.m;
+  if (top === 'fissi'){
+    var quota = 1 - cibo / inc;
+    m = quota > 0
+      ? ['Con i tuoi numeri, il pareggio è circa <b>' + euro((pers + fissi) / quota) + '</b> al mese.',
+         'Sotto quella cifra lavori in perdita. Scrivilo dove lo vedi ogni giorno e controlla, settimana per settimana, se ci arrivi.']
+      : ['Prima di tutto controlla il costo di cibo e bevande: così com\'è, non lascia spazio per pagare il resto.'];
+  }
+  document.getElementById('mossa').innerHTML = p(m);
+
+  msg.textContent = 'Ciao Mirco, ho fatto il conto del mio locale: ' +
+    (x < 0 ? 'ogni 100 € incassati ci rimetto ' + Math.round(-x) + ' €' : 'su 100 € incassati mi restano ' + Math.round(x) + ' €') +
+    ' e la fetta più grossa ' + f.nome + '.';
 }
 function copia(){
   var t = document.getElementById('messaggio').textContent, b = document.getElementById('btnCopia');
@@ -205,8 +244,7 @@ function copia(){
   else { vecchio(t); fatto(); }
 }
 function vecchio(t){ var a = document.createElement('textarea'); a.value = t; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); } catch(e){} a.remove(); }
-var tutti = document.querySelectorAll('input');
-for (var j = 0; j < tutti.length; j++) tutti[j].oninput = calcola;
+['inc','cibo','pers','fissi'].forEach(function(id){ document.getElementById(id).oninput = calcola; });
 if (DENTRO_APP){ document.getElementById('apriChat').hidden = true; document.getElementById('tornaChat').hidden = false; }
 </script>
 </body>
